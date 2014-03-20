@@ -1,3 +1,4 @@
+
 // create an "immediately invoked function" expression -> creates an own scope
 ( function( $jQ )
 {
@@ -5,24 +6,27 @@
 	// this function of name 'gesture' will be available like so: $jQ( selector ).gesture
 	$jQ.fn.gesture = function( type, callback )
 	{
-		var offsetLeft_mouseup;
 		var offsetLeft_mousedown;
+		var offsetTop_mousedown;
 
 		// record mouse up position
 		$jQ( this ).bind( 'mouseup', function( e )
-		{
-			offsetLeft_mouseup = e.pageX;
-			
+		{	
+			// threshold on y axis -> do not consider movements over 30px
+			if ( Math.abs( offsetTop_mousedown - e.pageY ) > 30 ){
+				return;
+			}
+
 			if ( type == 'swipeLeft' )
 			{
 				// trigger event swipe left
-				if ( offsetLeft_mousedown - offsetLeft_mouseup > 100 )
+				if ( offsetLeft_mousedown - e.pageX > 100 )
 					callback( e );
 			}
 			else if ( type == 'swipeRight' )
 			{
 				// trigger event swipe right
-				if ( offsetLeft_mouseup - offsetLeft_mousedown > 100 )
+				if ( e.pageX - offsetLeft_mousedown > 100 )
 					callback( e );
 			}
 
@@ -32,6 +36,7 @@
 		// record mouse down position
 		$jQ( this ).bind( 'mousedown', function( e )
 		{
+			offsetTop_mousedown = e.pageY;
 			offsetLeft_mousedown = e.pageX;
 		});
 
