@@ -12,7 +12,6 @@
 		$jQ( this ).bind( 'mouseup', function( e )
 		{
 			offsetLeft_mouseup = e.pageX;
-			console.log( offsetLeft_mouseup );
 			
 			if ( type == 'swipeLeft' )
 			{
@@ -34,7 +33,6 @@
 		$jQ( this ).bind( 'mousedown', function( e )
 		{
 			offsetLeft_mousedown = e.pageX;
-			console.log( offsetLeft_mousedown );
 		});
 
 		return this;
