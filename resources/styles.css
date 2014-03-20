@@ -1,0 +1,16 @@
+
+body {
+	margin: 32px 0;
+}
+
+.wrapper {
+	width: 1024px;
+	margin: auto;
+}
+
+.element {
+	border: 1px solid #ccc;
+	height: 128px;
+	margin: 13px 0;
+	padding: 13px;
+}
