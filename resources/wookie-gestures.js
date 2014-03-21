@@ -12,21 +12,21 @@
 		// record mouse up position
 		$jQ( this ).bind( 'mouseup', function( e )
 		{	
-			// threshold on y axis -> do not consider movements over 30px
-			if ( Math.abs( offsetTop_mousedown - e.pageY ) > 30 ){
-				return;
-			}
+			var x_diff = offsetLeft_mousedown - e.pageX;
+			var y_diff = offsetTop_mousedown - e.pageY;
 
-			if ( type == 'swipeLeft' )
+			if ( Math.abs( x_diff ) > 100 )
 			{
+				// threshold on y axis -> do not consider movements over 30px
+				if ( Math.abs( y_diff ) > 30 )
+					return;
+
 				// trigger event swipe left
-				if ( offsetLeft_mousedown - e.pageX > 100 )
+				if ( x_diff > 100 && type == 'swipeLeft' )
 					callback( e );
-			}
-			else if ( type == 'swipeRight' )
-			{
+
 				// trigger event swipe right
-				if ( e.pageX - offsetLeft_mousedown > 100 )
+				else if ( x_diff < 100 && type == 'swipeRight' )
 					callback( e );
 			}
 
