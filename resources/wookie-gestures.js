@@ -29,6 +29,20 @@
 				else if ( x_diff < 100 && type == 'swipeRight' )
 					callback( e );
 			}
+			else if ( Math.abs( y_diff ) > 100 )
+			{
+				// threshold on x axis -> do not consider movements over 30px
+				if ( Math.abs( x_diff ) > 30 )
+					return;
+
+				// trigger event swipe up
+				if ( y_diff > 100 && type == 'swipeUp' )
+					callback( e );
+
+				// trigger event swipe down
+				else if ( y_diff < 100 && type == 'swipeDown' )
+					callback( e );
+			}
 
 			return this;
 		});
