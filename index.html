@@ -14,12 +14,12 @@
 	<body>
 		<div class='wrapper'>
 			
-			<div class='element'>
+			<div class='element first'>
 
 
 			</div>
 
-			<div class='element'>
+			<div class='element last'>
 
 
 			</div>
@@ -28,14 +28,26 @@
 
 		<script type='text/javascript'>
 
-			$jQ( '.element' ).gesture( 'swipeRight', function( e )
+			<!-- demo on first element: swipe right and swipe up-->
+			$jQ( '.first' ).gesture( 'swipeRight', function( e )
 			{
 				alert( 'what shall we do with the drunken sailor?' );
 			});
 
-			$jQ( '.element' ).gesture( 'swipeLeft', function( e )
+			$jQ( '.first' ).gesture( 'swipeUp', function( e )
 			{
-				alert( 'that shall we do with the drunken sailor!!' );
+				alert( 'Ho! Ho! and up she rises' );
+			});
+
+			<!-- demo on last element: swipe left and swipe down -->
+			$jQ( '.last' ).gesture( 'swipeLeft', function( e )
+			{
+				alert( 'that shall we do with the drunken sailor!' );
+			});
+
+			$jQ( '.last' ).gesture( 'swipeDown', function( e )
+			{
+				alert( 'Early in the morning.' );
 			});
 
 		</script>
